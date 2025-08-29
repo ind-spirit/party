@@ -1,313 +1,215 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EDM PARTY — анонс</title>
-  <meta name="description" content="EDM PARTY — 25 апреля, 20:00, Room 102. Бери друзей и хорошее настроение!" />
-  <style>
-    :root{
-      --bg:#1a0f1e;        /* глубокий фиолет */
-      --ink:#ffffff;       /* основной текст */
-      --muted:#d6b3e0;     /* приглушённый */
-      --accent:#b867c8;    /* акцент */
-      --accent-2:#8a3fa5;  /* акцент тень */
-      --chip:rgba(255,255,255,.07);
-      --line:rgba(255,255,255,.06);
-      --card:rgba(255,255,255,.05);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      color:var(--ink);
-      background:var(--bg);
-      line-height:1.5;
-      overflow-x:hidden;
-    }
-    /* Фоновая сетка + виньетка */
-    .grid-bg::before,
-    .grid-bg::after,
-    .vignette::after{
-      content:"";position:absolute;inset:0;pointer-events:none
-    }
-    .grid-bg::before{
-      opacity:.6;
-      background-image:
-        repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 48px),
-        repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 48px);
-    }
-    .grid-bg::after{background:radial-gradient(ellipse at center, transparent 60%, #000 100%);}
-    .vignette::after{box-shadow:inset 0 0 180px 40px rgba(0,0,0,.6)}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synth College Event - Blueprint Style</title>
+    <style>
+        /* Sepia color scheme: warm tones, technical font */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4e4bc; /* Sepia background */
+            color: #4a2c0a; /* Dark sepia text */
+            margin: 0;
+            padding: 20px;
+            background-image: 
+                linear-gradient(to right, rgba(74, 44, 10, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(74, 44, 10, 0.2) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
 
-    header{
-      display:flex;align-items:center;justify-content:space-between;
-      max-width:1100px;margin:0 auto;padding:20px 24px;
-    }
-    header .brand{letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8);font-size:12px}
-    header nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:14px;opacity:.85}
-    header nav a:hover{opacity:1;color:#e7d5ee}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(245, 230, 188, 0.8);
+            padding: 20mm;
+            border: 2px solid #4a2c0a;
+            box-shadow: 5mm 5mm 10mm rgba(74, 44, 10, 0.3);
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-gap: 5mm;
+            position: relative;
+        }
 
-    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+        h1 {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            border-bottom: 1px solid #4a2c0a;
+            padding-bottom: 5mm;
+            margin-bottom: 0;
+        }
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr;gap:32px;align-items:center;padding:28px 0 56px;position:relative}
-    .math{color:var(--muted);font-size:11px;line-height:1.15;margin-bottom:12px}
-    .title{font-weight:900;line-height:.92;letter-spacing:.02em;margin:0;text-shadow:0 6px 24px rgba(186,104,200,.25)}
-    .title span{display:block}
-    .title .edm{font-size:64px}
-    .title .party{font-size:64px}
-    @media (min-width:640px){.title .edm,.title .party{font-size:96px}}
-    @media (min-width:900px){.hero{grid-template-columns:1.1fr .9fr;gap:40px;padding:48px 0 72px}.title .edm,.title .party{font-size:112px}}
+        .event-info {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2em;
+            margin-bottom: 5mm;
+        }
 
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-    .chip{background:var(--chip);padding:10px 14px;border-radius:16px;backdrop-filter:blur(6px);}
+        .section {
+            padding: 5mm;
+            border: 1px solid #4a2c0a;
+            background: rgba(245, 222, 179, 0.2);
+            position: relative;
+        }
 
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-    .btn{appearance:none;border:none;cursor:pointer;padding:12px 18px;border-radius:16px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
-    .btn-primary{background:var(--accent);color:#1a0f1e;box-shadow:0 12px 28px rgba(138,63,165,.35)}
-    .btn-primary:hover{filter:brightness(1.05)}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;backdrop-filter:blur(6px)}
-    .btn-ghost:hover{border-color:#fff}
+        .section h2 {
+            margin-top: 0;
+            border-bottom: 1px dashed #4a2c0a;
+            padding-bottom: 2mm;
+        }
 
-    /* Вертушка */
-    .deck{position:relative;width:100%;height:360px}
-    @media (min-width:900px){.deck{height:460px}}
-    .plinth{position:absolute;inset:auto 0 0 0;margin:auto;background:var(--card);border-radius:16px;width:95%;height:72%;box-shadow:0 30px 60px rgba(0,0,0,.35);}
-    .record{position:absolute;width:min(78%,420px);aspect-ratio:1;border-radius:50%;left:10%;top:14%;background:
-      radial-gradient(circle at 50% 50%, #1d0f1f 0 46%, #120915 47% 60%, #0a0410 61% 100%);
-      box-shadow:inset 0 0 0 2px rgba(255,255,255,.07), inset 0 0 22px rgba(0,0,0,.6);
-      animation:spin 8s linear infinite paused
-    }
-    .record::after{content:"";position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:22%;aspect-ratio:1;border-radius:50%;background:#2f1a36;box-shadow:0 0 0 2px rgba(255,255,255,.08), inset 0 0 0 6px #1a0f1e}
-    .grooves{position:absolute;inset:0;border-radius:50%;background:
-      repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,.05) 0 1px, transparent 1px 4px);
-      mix-blend-mode:overlay;opacity:.5;border:3px solid rgba(255,255,255,.05);border-radius:50%}
+        #schedule { grid-column: 1 / span 6; }
+        #dj { grid-column: 7 / span 6; }
+        #dresscode { grid-column: 1 / span 6; }
+        #payment { grid-column: 7 / span 6; }
 
-    .arm{position:absolute;right:6%;top:12%;width:220px;height:220px}
-    .arm .base{position:absolute;right:0;top:0;width:48px;height:48px;border:2px solid rgba(255,255,255,.25);border-radius:50%;}
-    .arm .bar{position:absolute;right:18px;top:38px;width:160px;height:6px;background:rgba(255,255,255,.75);transform-origin:right center;transform:rotate(18deg);border-radius:3px}
-    .arm .head{position:absolute;right:158px;top:24px;width:26px;height:36px;background:#0e0811;border:2px solid rgba(255,255,255,.35);border-radius:4px}
+        /* Dimension labels - sepia tone, no overlap */
+        .dimension {
+            position: absolute;
+            font-size: 0.8em;
+            color: #8a6d3b; /* Sepia brown for dimensions */
+            pointer-events: none;
+        }
 
-    .play-hint{position:absolute;top:-10px;left:-6px;font-size:11px;color:var(--muted)}
+        #container-dim {
+            top: -5mm;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
 
-    .deck.playing .record{animation-play-state:running}
+        #schedule-dim-width {
+            bottom: -5mm;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
 
-    /* Орбитальный график справа наверху (как на постере) */
-    .orb{position:absolute;right:24px;top:40px;width:140px;height:140px;border-radius:50%;border:2px solid rgba(255,255,255,.25)}
-    .orb::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(255,255,255,.25)}
-    .orb::after{content:"";position:absolute;top:50%;left:0;right:0;height:2px;background:rgba(255,255,255,.25)}
-    .orb .needle{position:absolute;width:2px;height:92px;left:50%;top:50%;background:rgba(255,255,255,.8);transform-origin:bottom center;transform:rotate(28deg) translateX(-50%)}
+        #schedule-dim-height {
+            left: -10mm;
+            top: 0;
+            bottom: 0;
+            writing-mode: vertical-rl;
+            text-align: center;
+        }
 
-    /* MINI sections */
-    section{position:relative}
-    .section{padding:44px 0}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 18px 8px}
-    .two-col{display:grid;grid-template-columns:1fr;gap:18px}
-    @media (min-width:820px){.two-col{grid-template-columns:1fr 1fr;gap:24px}}
+        #dj-dim-width {
+            bottom: -5mm;
+            left: 50%;
+            right: 0;
+            text-align: center;
+        }
 
-    h2{margin:0 0 14px;font-size:22px;letter-spacing:.02em}
-    p{margin:0 0 10px;color:rgba(255,255,255,.9)}
-    .muted{color:rgba(255,255,255,.7)}
+        #dj-dim-height {
+            right: -10mm;
+            top: 0;
+            bottom: 0;
+            writing-mode: vertical-rl;
+            text-align: center;
+        }
 
-    /* RSVP модалка */
-    dialog{border:none;border-radius:18px;padding:0;background:var(--card);color:var(--ink);width:min(560px,92vw)}
-    dialog::backdrop{background:rgba(0,0,0,.6)}
-    .modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
-    .modal-body{padding:18px}
-    .field{display:grid;gap:6px;margin-bottom:12px}
-    .field input,.field textarea{padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:#120916;color:#fff}
-    .field input:focus,.field textarea:focus{outline:2px solid var(--accent)}
-    .row{display:flex;gap:10px}
+        #dresscode-dim-width {
+            bottom: -5mm;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
 
-    footer{padding:40px 0 60px;text-align:center;color:rgba(255,255,255,.65)}
+        #dresscode-dim-height {
+            left: -10mm;
+            top: 0;
+            bottom: 0;
+            writing-mode: vertical-rl;
+            text-align: center;
+        }
 
-    @keyframes spin{to{transform:rotate(360deg)}}
-  </style>
+        #payment-dim-width {
+            bottom: -5mm;
+            left: 50%;
+            right: 0;
+            text-align: center;
+        }
+
+        #payment-dim-height {
+            right: -10mm;
+            top: 0;
+            bottom: 0;
+            writing-mode: vertical-rl;
+            text-align: center;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            #schedule, #dj, #dresscode, #payment {
+                grid-column: 1 / -1;
+            }
+            .dimension {
+                font-size: 0.6em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: repeat(4, 1fr);
+                padding: 10mm;
+            }
+            .event-info {
+                flex-direction: column;
+            }
+            .dimension {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="grid-bg vignette">
-    <header>
-      <div class="brand">EDM society</div>
-      <nav>
-        <a href="#details">детали</a>
-        <a href="#lineup">лайн‑ап</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-    </header>
-
-    <main class="container">
-      <section class="hero" aria-label="EDM Party hero">
-        <div>
-          <div class="math">
-            <div>the music is</div>
-            <div>increasing where</div>
-            <div>x &gt; 1</div>
-          </div>
-          <h1 class="title">
-            <span class="edm">EDM</span>
-            <span class="party">PARTY</span>
-          </h1>
-
-          <div id="details" class="chips" role="list">
-            <span class="chip" role="listitem">25 апреля</span>
-            <span class="chip" role="listitem">20:00</span>
-            <span class="chip" role="listitem">Room 102</span>
-          </div>
-
-          <div class="cta">
-            <button class="btn btn-primary" id="addToCal">Добавить в календарь</button>
-            <button class="btn btn-ghost" id="openRSVP">RSVP</button>
-          </div>
+    <div class="container">
+        <h1>Back to School</h1>
+        <div class="event-info">
+            <p><br>7 сентября 18:30</p>
+            <p>Synth College<br>Ул. Каменноостровский проспект, 42</p>
         </div>
 
-        <div class="deck" id="deck">
-          <div class="play-hint muted">нажми, чтобы играть</div>
-          <div class="record" id="record">
-            <div class="grooves" aria-hidden="true"></div>
-          </div>
-          <div class="plinth"></div>
-          <div class="arm">
-            <div class="base"></div>
-            <div class="bar"></div>
-            <div class="head"></div>
-          </div>
+        <div id="schedule" class="section">
+            <h2>Расписание</h2>
+            <p>18:30 — Открытие дверей</p>
+            <p>19:00 — Начало</p>
+            <p>22:30 — Завершение</p>
+            <div class="dimension" id="schedule-dim-width">Ширина: 300мм</div>
+            <div class="dimension" id="schedule-dim-height">Высота: 50мм</div>
         </div>
 
-        <div class="orb" aria-hidden="true">
-          <div class="needle"></div>
+        <div id="dj" class="section">
+            <h2>Диджей</h2>
+            <p>Главный микс вечера от DJ Cartridge</p>
+            <p>20:00 - 22:00 — Выступление диджея</p>
+            <div class="dimension" id="dj-dim-width">Ширина: 300мм</div>
+            <div class="dimension" id="dj-dim-height">Высота: 50мм</div>
         </div>
-      </section>
 
-      <section id="lineup" class="section">
-        <div class="two-col">
-          <div class="card">
-            <h2>Лайн‑ап</h2>
-            <p><strong>20:00</strong> — Warm‑up: <em>Local Synth</em></p>
-            <p><strong>21:00</strong> — Headliner: <em>∆ Delta Pulse</em></p>
-            <p><strong>22:30</strong> — Live set: <em>Grid Runner</em></p>
-            <p class="muted">Сюрприз в полночь ✦</p>
-          </div>
-          <div class="card">
-            <h2>Как найти нас</h2>
-            <p>Адрес кампуса: корпус A, <strong>Room 102</strong>. Вход через главный холл, лифт на 1 этаж, следуйте указателям с логотипом проигрывателя.</p>
-            <p class="muted">Паспорт не обязателен, но возьмите студенческий для скидок бара.</p>
-          </div>
+        <div id="dresscode" class="section">
+            <h2>Дресс-код</h2>
+            <p>Крайне желателен, приветствуются любые интерпретации на тему Back to School</p>
+            <div class="dimension" id="dresscode-dim-width">Ширина: 300мм</div>
+            <div class="dimension" id="dresscode-dim-height">Высота: 50мм</div>
         </div>
-      </section>
 
-      <section id="faq" class="section">
-        <div class="two-col">
-          <div class="card">
-            <h2>FAQ</h2>
-            <p><strong>Дресс‑код?</strong> Свободный, но блестящее приветствуется.</p>
-            <p><strong>Можно с друзьями?</strong> Да! Просто укажите количество в RSVP.</p>
-            <p><strong>Вход?</strong> Бесплатно для студентов, гостям — донат.</p>
-          </div>
-          <div class="card">
-            <h2>Правила</h2>
-            <p>Будь уважителен. Никаких бутылок в зал, охрана вправе отказать во входе лицам в состоянии опьянения.</p>
-            <p class="muted">Мы заботимся о безопасности и согласии — если что‑то не ок, обращайся к организаторам.</p>
-          </div>
+        <div id="payment" class="section">
+            <h2>Оплата</h2>
+            <p>Банковские реквизиты: </p>
+            <p>Бронирование места происходит после подтверждения оплаты, которое отправляется человеку, пригласившему вас.</p>
+            <div class="dimension" id="payment-dim-width">Ширина: 300мм</div>
+            <div class="dimension" id="payment-dim-height">Высота: 50мм</div>
         </div>
-      </section>
 
-      <footer>
-        © EDM Society · 2025 · Сделано с любовью к синтам
-      </footer>
-    </main>
-  </div>
-
-  <!-- RSVP модальное окно -->
-  <dialog id="rsvpModal" aria-labelledby="rsvpTitle">
-    <div class="modal-head">
-      <h3 id="rsvpTitle">RSVP</h3>
-      <button class="btn btn-ghost" id="closeRSVP" style="padding:8px 12px">Закрыть</button>
+        <div class="dimension" id="container-dim">Общая ширина: 600мм, 12-колонная сетка</div>
     </div>
-    <form class="modal-body" id="rsvpForm" method="dialog">
-      <div class="field">
-        <label for="name">Имя</label>
-        <input id="name" name="name" type="text" placeholder="Алекс" required />
-      </div>
-      <div class="row">
-        <div class="field" style="flex:1">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-        </div>
-        <div class="field" style="width:140px">
-          <label for="count">Гостей</label>
-          <input id="count" name="count" type="number" value="1" min="1" max="10" />
-        </div>
-      </div>
-      <div class="field">
-        <label for="msg">Сообщение (необязательно)</label>
-        <textarea id="msg" name="msg" rows="3" placeholder="Есть вопрос по доступности…"></textarea>
-      </div>
-      <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:10px">
-        <button class="btn btn-ghost" type="reset">Сброс</button>
-        <button class="btn btn-primary" value="default" id="submitRSVP" type="submit">Отправить</button>
-      </div>
-    </form>
-  </dialog>
-
-  <script>
-    // Проигрыватель (анимация)
-    const deck = document.getElementById('deck');
-    const record = document.getElementById('record');
-    let playing = false;
-    deck.addEventListener('click', () => {
-      playing = !playing;
-      deck.classList.toggle('playing', playing);
-    });
-
-    // .ics генерация
-    function createICS(){
-      const pad = n => String(n).padStart(2,'0');
-      // Локальная дата 25 апреля 20:00
-      const start = new Date(2025,3,25,20,0,0); // месяцы с нуля
-      const end = new Date(2025,3,25,23,0,0);
-      const toICAL = d => (
-        d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'T'+pad(d.getHours())+pad(d.getMinutes())+pad(d.getSeconds())
-      );
-      const ics = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//EDM PARTY//RU',
-        'CALSCALE:GREGORIAN',
-        'BEGIN:VEVENT',
-        'UID:'+Date.now()+'@edm.party',
-        'DTSTAMP:'+toICAL(new Date()),
-        'DTSTART:'+toICAL(start),
-        'DTEND:'+toICAL(end),
-        'SUMMARY:EDM PARTY',
-        'DESCRIPTION:Бери друзей и хорошее настроение!',
-        'LOCATION:Room 102',
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\n');
-      const blob = new Blob([ics],{type:'text/calendar;charset=utf-8'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'edm-party.ics'; a.click();
-      URL.revokeObjectURL(url);
-    }
-    document.getElementById('addToCal').addEventListener('click', createICS);
-
-    // RSVP модалка
-    const modal = document.getElementById('rsvpModal');
-    document.getElementById('openRSVP').addEventListener('click',()=>modal.showModal());
-    document.getElementById('closeRSVP').addEventListener('click',()=>modal.close());
-
-    // Сохранение RSVP локально (демо)
-    document.getElementById('rsvpForm').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(e.target).entries());
-      localStorage.setItem('edm-rsvp', JSON.stringify({...data, ts: Date.now()}));
-      e.target.reset();
-      modal.close();
-      alert('Спасибо! Мы получили ваш RSVP.');
-    });
-  </script>
 </body>
 </html>
